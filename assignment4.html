@@ -5,9 +5,25 @@
 	<meta charset='utf-8'>
 	<title>Assignment4</title>
 	<script src='assignment4.js'></script>
+	<style type='text/css'>	
+	  #gists {
+	  	width:50%;
+	  	border:1px;
+	  	float:left;
+	  	min-height:200px;
+	  	background-color:#D9D1E8;
+	  }
+	  #favs {
+	  	width:50%;
+	  	border:1px;
+	  	float:right;
+	  	min-height:200px;
+	  	background-color:#E0E8D1;
+	  }
+	</style>
   </head>
 	<body>
-	  <form action="" method="get">
+	  <form action="https://api.github.com/gists" method="get">
 	  	  <div>
 			  <h5>How many pages of gists?</h5>
 			  <select name="pages-select">
@@ -27,8 +43,15 @@
 		  <label>JavaScript</label>
 		  <input type="checkbox" name="JavaScript"><br>
 		  <label>SQL</label>
-		  <input type="checkbox" name="SQL"><br>
-		  <input type="submit">
+		  <input type="checkbox" name="SQL"><br><br>
+		  <input type="submit" value="Search">
 	  </form>
+	  <br>
+	  <div id="gists">
+	  	Gists
+	  </div>
+	  <div id="favs">
+	  	Favorites
+	  </div>
   </body>
 </html>
