@@ -23,35 +23,43 @@
 	</style>
   </head>
 	<body>
-	  <form action="https://api.github.com/gists" method="get">
-	  	  <div>
-			  <h5>How many pages of gists?</h5>
-			  <select name="pages-select">
-				  <option value="1">One</option>
-				  <option value="2">Two</option>
-				  <option value="3">Three</option>
-				  <option value="4">Four</option>
-				  <option value="5">Five</option>
-		      </select>
-		  </div>
-		  <br>
-		  <h5>Choose Languages:</h5>
-		  <label>Python</label>
-		  <input type="checkbox" name="Python"><br>
-		  <label>JSON</label>
-		  <input type="checkbox" name="JSON"><br>
-		  <label>JavaScript</label>
-		  <input type="checkbox" name="JavaScript"><br>
-		  <label>SQL</label>
-		  <input type="checkbox" name="SQL"><br><br>
-		  <input type="submit" value="Search">
-	  </form>
+	  <section>
+	  	<div>
+	  		<label>How many pages of gists?</label>
+	  		<input type="number" name="numPages">
+	  	</div>
+	  	<div>
+	  		<label>Python gists?</label>
+	  		<input type="checkbox" name="python">
+	  	</div>
+	  	<div>
+	  		<label>JavaScript gists?</label>
+	  		<input type="checkbox" name="javascript">
+	  	</div>
+	  	<div>
+	  		<label>SQL gists?</label>
+	  		<input type="checkbox" name="sql">
+	  	</div>
+	  	<div>
+	  		<label>JSON gists?</label>
+	  		<input type="checkbox" name="json">
+	  	</div>
+	  	<div>
+	  		<input type="button" value="Get gists" onclick="getGists()">
+	  	</div>	  	  		  	
+	  </section>
 	  <br>
 	  <div id="gists">
-	  	Gists
+	  	Gists<br>
+	  	<ul id='gist-list'>
+
+	  	</ul>
 	  </div>
 	  <div id="favs">
-	  	Favorites
+	  	Favorites<br>
+	  	<ul id='favs-list'>
+
+	  	</ul>
 	  </div>
   </body>
 </html>
