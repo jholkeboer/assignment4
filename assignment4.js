@@ -26,15 +26,26 @@ function Fav(favLink, favLang) {
 function addFav(index) {
 	var tr = document.getElementById(index);
 	var favTable = document.getElementById('favs-table');
+	tr.childNodes[2].innerHTML = '<input type=\'button\' value=\'Delete\' onclick=\'removeFav(' + (tr.getAttribute("id")) + ')\'>';
 	favTable.appendChild(tr);
 
 	//remove element from gistJSON
 
 }
 
+function removeFav(index) {
+	var favTable = document.getElementById('favs-table');
+	var tr = favTable.childNodes[index];
+	var gistTable = document.getElementById('gist-table');
+	var newtr = tr;
+	//newtr.setAttribute("id", gistTable.childNodes.length);
+	gistTable.appendChild(newtr);
+}
+
 
 function tableRow(gist, idCounter) {
 	var tr = document.createElement('tr');
+	tr.setAttribute("id",idCounter);
 	var td1 = document.createElement('td');
 	var td2 = document.createElement('td');
 	var td3 = document.createElement('td');
@@ -44,7 +55,6 @@ function tableRow(gist, idCounter) {
 	tr.appendChild(td1);
 	tr.appendChild(td2);
 	tr.appendChild(td3);
-	tr.setAttribute("id",idCounter);
 	return tr;
 }
 
