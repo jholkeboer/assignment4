@@ -62,10 +62,39 @@ function renderGistTable(table, gistJSON) {
 			var lang;
 			for (var key in gistJSON[j][k].files) {
 				if (gistJSON[j][k].files.hasOwnProperty(key)) {
-					lang = gistJSON[j][k].files[key].language;
+					if (gistJSON[j][k].files[key].language !== undefined && gistJSON[j][k].files[key].language != '' && gistJSON[j][k].files[key].language !== null) {
+						lang = gistJSON[j][k].files[key].language;
+					}
+					else {
+						lang = 'no language listed';
+					}
 				}
 			}
 			var newGist = new Gist(gistJSON[j][k].description, gistJSON[j][k].html_url, lang);
+
+			//language filtration
+			if (document.getElementsByName('python')[0].checked) {
+				if (newGist.lang == 'Python') {
+					continue;
+				}
+			}
+			else if (document.getElementsByName('javascript')[0].checked) {
+				if (newGist.lang == 'JavaScript') {
+					continue;
+				}
+			}
+			else if (document.getElementsByName('sql')[0].checked) {
+				if (newGist.lang == 'SQL') {
+					continue;
+				}
+			}
+			else if (document.getElementsByName('json')[0].checked) {
+				if (newGist.lang == 'JSON') {
+					continue;
+				}
+			}
+
+
 			console.log(newGist);
 			table.appendChild(tableRow(newGist));
 		}
@@ -76,6 +105,8 @@ function renderGistTable(table, gistJSON) {
 //runs AJAX query
 function getGists() {
 	if (document.getElementsByName('numPages')[0].value >= 1 && document.getElementsByName('numPages')[0].value <= 5) {
+		var el = document.getElementById('input-error');
+		el.innerHTML = '';
 		var numPages = document.getElementsByName('numPages')[0].value;
 		gistJSON = [];
 		for (var i = 0; i < numPages; i++) {
@@ -95,6 +126,7 @@ function getGists() {
 					gistJSON.push(JSON.parse(this.responseText));
 					console.log(gistJSON);
 				}
+				//render table
 				renderGistTable(document.getElementById('gist-table'), gistJSON);
 			};
 			req.open('GET', url);
@@ -104,6 +136,9 @@ function getGists() {
 	//invalid input case
 	else {
 		console.log('Invalid input.');
+		console.log(document.getElementsByName('numPages')[0].value);
+		var el = document.getElementById('input-error');
+		el.innerHTML = 'You have not entered a valid number of pages.';
 	}
 
 }
@@ -133,5 +168,4 @@ window.onload = function() {
 	else {
 		gistStorage = JSON.parse(localStorage.getItem('myGists'));
 	}
-	getGists();
 };
