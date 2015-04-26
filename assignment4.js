@@ -7,7 +7,7 @@ var gistJSON = [];
 var numPages = 1;
 
 
-function Gist(desc, address) {
+function Gist(desc, address, lang) {
 	if (desc === null || desc == '' || desc === undefined) {
 		this.desc = "[no description]";
 	}
@@ -15,6 +15,7 @@ function Gist(desc, address) {
 		this.desc = desc;
 	}
 	this.address = address;
+	this.lang = lang;
 }
 
 // function addGist(gistStorage, gist) {
@@ -58,7 +59,14 @@ function renderGistTable(table, gistJSON) {
 	for (var j=0; j < gistJSON.length; j++) {
 		//loop through each page of gists (subarray)
 		for (var k=0; k < gistJSON[j].length; k++) {
-			var newGist = new Gist(gistJSON[j][k].description, gistJSON[j][k].html_url);
+			var lang;
+			for (var key in gistJSON[j][k].files) {
+				if (gistJSON[j][k].files.hasOwnProperty(key)) {
+					lang = gistJSON[j][k].files[key].language;
+				}
+			}
+			var newGist = new Gist(gistJSON[j][k].description, gistJSON[j][k].html_url, lang);
+			console.log(newGist);
 			table.appendChild(tableRow(newGist));
 		}
 	}
