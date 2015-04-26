@@ -1,7 +1,6 @@
 //assignment4.js
 //jack holkeboer
 
-var gistStorage = null;
 var gistArray = [];
 var gistJSON = [];
 var numPages = 1;
@@ -18,38 +17,32 @@ function Gist(desc, address, lang) {
 	this.lang = lang;
 }
 
-// function addGist(gistStorage, gist) {
-// 	if (gist instanceof Gist) {
-// 		gistStorage.gists.push(gist);
-// 		localStorage.setItem('myGists', JSON.stringify(gistStorage))
-// 	}
-// 	console.error('That\'s not a gist.');
-// 	return false;
-// }
+function Fav(favLink, favLang) {
+	//favorite constructor
+	this.favLink = favLink;
+	this.favLang = favLang;
+}
+
+function addFav() {
+
+}
 
 
 function tableRow(gist) {
 	var tr = document.createElement('tr');
 	var td1 = document.createElement('td');
 	var td2 = document.createElement('td');
+	var td3 = document.createElement('td');
 	td1.innerHTML = '<a href=\"' + gist.address + '\">' + gist.desc + '</a>';
-	td2.innerHTML = 'button';
+	td2.innerHTML = gist.lang;
+	td3.innerHTML = '<input type=\'button\' value=\'Favorite\' onclick=\'addFav()\'>';
 	tr.appendChild(td1);
 	tr.appendChild(td2);
+	tr.appendChild(td3);
 	return tr;
 }
 
-// function extractGist(gist) {
-// 	var gistCell = document.createElement('td');
-// 	var buttonCell = document.createElement('td');
-// 	gistCell.innerHTML = '<a href=\"' + gist.address + '\">' + gist.desc + '</a>';
-// 	buttonCell = 'button';
-// 	return {'gistCell':gistCell, 'buttonCell':buttonCell};
-// }
 
-// function saveOptions() {
-
-// }
 
 function renderGistTable(table, gistJSON) {
 	//clear table
@@ -93,7 +86,6 @@ function renderGistTable(table, gistJSON) {
 					continue;
 				}
 			}
-
 
 			console.log(newGist);
 			table.appendChild(tableRow(newGist));
