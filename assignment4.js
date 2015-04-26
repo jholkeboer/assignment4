@@ -23,22 +23,28 @@ function Fav(favLink, favLang) {
 	this.favLang = favLang;
 }
 
-function addFav() {
+function addFav(index) {
+	var tr = document.getElementById(index);
+	var favTable = document.getElementById('favs-table');
+	favTable.appendChild(tr);
+
+	//remove element from gistJSON
 
 }
 
 
-function tableRow(gist) {
+function tableRow(gist, idCounter) {
 	var tr = document.createElement('tr');
 	var td1 = document.createElement('td');
 	var td2 = document.createElement('td');
 	var td3 = document.createElement('td');
 	td1.innerHTML = '<a href=\"' + gist.address + '\">' + gist.desc + '</a>';
 	td2.innerHTML = gist.lang;
-	td3.innerHTML = '<input type=\'button\' value=\'Favorite\' onclick=\'addFav()\'>';
+	td3.innerHTML = '<input type=\'button\' value=\'Favorite\' onclick=\'addFav(' + idCounter + ')\'>';
 	tr.appendChild(td1);
 	tr.appendChild(td2);
 	tr.appendChild(td3);
+	tr.setAttribute("id",idCounter);
 	return tr;
 }
 
@@ -49,6 +55,7 @@ function renderGistTable(table, gistJSON) {
 	for (var i=table.childNodes.length - 1; i >= 0; i--) {
 		table.removeChild(table.childNodes[i]);
 	}
+	var idCounter = 0;
 	for (var j=0; j < gistJSON.length; j++) {
 		//loop through each page of gists (subarray)
 		for (var k=0; k < gistJSON[j].length; k++) {
@@ -64,7 +71,6 @@ function renderGistTable(table, gistJSON) {
 				}
 			}
 			var newGist = new Gist(gistJSON[j][k].description, gistJSON[j][k].html_url, lang);
-
 			//language filtration
 			if (document.getElementsByName('python')[0].checked) {
 				if (newGist.lang == 'Python') {
@@ -88,7 +94,8 @@ function renderGistTable(table, gistJSON) {
 			}
 
 			console.log(newGist);
-			table.appendChild(tableRow(newGist));
+			table.appendChild(tableRow(newGist, idCounter));
+			idCounter += 1;
 		}
 	}
 }
@@ -132,7 +139,6 @@ function getGists() {
 		var el = document.getElementById('input-error');
 		el.innerHTML = 'You have not entered a valid number of pages.';
 	}
-
 }
 
 //takes dictionary of parameters and puts them in an array to be added to the url
@@ -154,7 +160,7 @@ function clearLocalStorage() {
 window.onload = function() {
 	var testStorage = localStorage.getItem('myGists');
 	if (testStorage === null) {
-		gistStorage = {'gists': [], 'favs': []};
+		gistStorage = {'favs': []};
 		localStorage.setItem('myGists', JSON.stringify(gistStorage));
 	}
 	else {

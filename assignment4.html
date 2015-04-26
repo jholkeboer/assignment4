@@ -1,4 +1,3 @@
-<!-- assignment4.html -->
 <!DOCTYPE html>
 <html>
   <head>
@@ -20,6 +19,12 @@
 	  	min-height:200px;
 	  	background-color:#E0E8D1;
 	  }
+	  table {
+	  	table-layout: fixed;
+	  }
+	  td {
+	  	word-wrap: break-word;
+	  }
 	</style>
   </head>
 	<body>
@@ -29,19 +34,19 @@
 	  		<input type="number" min="1" max="5" name="numPages">
 	  	</div>
 	  	<div>
-	  		<label>Python gists?</label>
+	  		<label>Filter out Python gists?</label>
 	  		<input type="checkbox" name="python">
 	  	</div>
 	  	<div>
-	  		<label>JavaScript gists?</label>
+	  		<label>Filter out JavaScript gists?</label>
 	  		<input type="checkbox" name="javascript">
 	  	</div>
 	  	<div>
-	  		<label>SQL gists?</label>
+	  		<label>Filter out SQL gists?</label>
 	  		<input type="checkbox" name="sql">
 	  	</div>
 	  	<div>
-	  		<label>JSON gists?</label>
+	  		<label>Filter out JSON gists?</label>
 	  		<input type="checkbox" name="json">
 	  	</div>
 	  	<div>
@@ -53,13 +58,13 @@
 	  <br>
 	  <div id="gists">
 	  	Gists<br>
-	  	<table id='gist-table' align='center' width='90%' border='1px'>
+	  	<table id='gist-table' align='center' width='95%' border='1px'>
 
 	  	</table>
 	  </div>
 	  <div id="favs">
 	  	Favorites<br>
-	  	<table id='favs-table' align='center' width='90%'>
+	  	<table id='favs-table' align='center' width='95%' border='1px'>
 
 	  	</table>
 	  </div>
