@@ -26,7 +26,7 @@
 	  <section>
 	  	<div>
 	  		<label>How many pages of gists?</label>
-	  		<input type="number" name="numPages">
+	  		<input type="number" min="1" max="5" name="numPages">
 	  	</div>
 	  	<div>
 	  		<label>Python gists?</label>
@@ -51,15 +51,15 @@
 	  <br>
 	  <div id="gists">
 	  	Gists<br>
-	  	<ul id='gist-list'>
+	  	<table id='gist-table' align='center' width='90%'>
 
-	  	</ul>
+	  	</table>
 	  </div>
 	  <div id="favs">
 	  	Favorites<br>
-	  	<ul id='favs-list'>
+	  	<table id='favs-table' align='center' width='90%'>
 
-	  	</ul>
+	  	</table>
 	  </div>
   </body>
 </html>
