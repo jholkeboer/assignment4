@@ -1,3 +1,4 @@
+Part 1 log:
 Start: Thu, 16 Apr 2015 12:02:00 0700
 End: Thu, 16 Apr 2015 12:42:46 -0700
 Tasks: initial commit
@@ -10,3 +11,32 @@ Tasks: finished objects.js
 Start: Tue, 21 Apr 2015 19:45:00 -0700
 End: Tue, 21 Apr 2015 20:30:23 -0700
 Tasks: all tests passing
+
+Part 2 log:
+Start: Tue, 21 Apr 2015 20:06:28 -0700
+End: Tue, 21 Apr 2015 21:06:28 -0700
+Tasks: initial commit
+Start: Tue, 21 Apr 2015 23:30:03 -0700
+End: Wed, 22 Apr 2015 00:41:03 -0700
+Tasks: form designed, next step ajax
+Start: Thu, 23 Apr 2015 18:41:27 -0700
+End: Thu, 23 Apr 2015 22:41:27 -0700
+Tasks: CSS layout
+Start: Thu, 23 Apr 2015 23:05:57 -0700
+End: Fri, 24 Apr 2015 00:05:57 -0700
+Tasks: working on ajax
+Start: Sat, 25 Apr 2015 16:07:54 -0700
+End: Sat, 25 Apr 2015 23:07:54 -0700
+Tasks: gists showing up
+Start: Sat, 25 Apr 2015 23:30:20 -0700
+End: Sun, 26 Apr 2015 00:50:20 -0700
+Tasks: language filtration
+Start: Sun, 26 Apr 2015 00:12:53 -0700
+End: Sun, 26 Apr 2015 01:12:53 -0700
+Tasks: add fav button
+Start: Sun, 26 Apr 2015 8:32:30 -0700
+End: Sun, 26 Apr 2015 12:32:30 -0700
+Tasks: favorites adding
+Start: Sun, 26 Apr 2015 12:33:28 -0700
+End: Sun, 26 Apr 2015 12:46:28 -0700
+Tasks: favs deleting
